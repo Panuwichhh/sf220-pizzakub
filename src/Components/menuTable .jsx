@@ -16,14 +16,19 @@ import {
 import { db } from "../utils/firebase";
 import Swal from "sweetalert2";
 
-const MenuManage = () => {
+
+
   const [Menu, setMenu] = useState([]);
 
+
+  // แก้ไขข้อมูลเมนู
   const handleEditData = async (id) => {
     const item = Menu.find(item => item.id === id); // ค้นหาข้อมูลรายการที่ต้องการแก้ไข
     const name = prompt("กรุณากรอกชื่อใหม่:");
     const description = prompt("กรุณากรอกคำอธิบายใหม่:");
     const price = prompt("กรุณากรอกราคาใหม่:");
+
+    // กำหนดให้รูปไม่เปลี่ยนเพราะจต้องดึง url ใหม่
     const url = item.url;
 
         setDoc(doc(db, 'menu', id), {
@@ -39,6 +44,8 @@ const MenuManage = () => {
         
   };
 
+
+  // ลบข้อมูล เมนู
   const handleDeleteData = async (id) => {
     Swal.fire({
       title: "ยืนยันการลบเมนู",
