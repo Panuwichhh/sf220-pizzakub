@@ -19,7 +19,7 @@ import Swal from "sweetalert2";
 const Bookingmange = () => {
   const [messages, setMessages] = useState([]);
 
-
+  //ลบข้อมูล
   const handleDeleteData = async (id) => {
     Swal.fire({
       title: "ยืนยันลบข้อมูลผู้จอง",
@@ -60,9 +60,11 @@ const Bookingmange = () => {
     return () => unsubscribe();
   }, []);
 
+
+  //เช็คสถานะ
   const Checkstatus = async (id) => {
-    const userBookingDocRef = doc(db, "userBooking", id);
-    await setDoc(userBookingDocRef, { status: !status }, { merge: true });
+    const userBookingDoc = doc(db, "userBooking", id);
+    await setDoc(userBookingDoc, { status: !status }, { merge: true });
     const querySnapshot = await getDocs(collection(db, "userBooking"));
     const newData = querySnapshot.docs.map((doc) => ({
       ...doc.data(),
