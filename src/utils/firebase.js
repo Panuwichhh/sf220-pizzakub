@@ -22,10 +22,14 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+
+
+
+//ตั้งค่าตัวแปร 
 const db = getFirestore(app);
 const imgeDB = getStorage(app)
 
 
 
-
+//ส่งตัวแปร
 export { imgeDB ,db};
