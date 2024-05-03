@@ -44,7 +44,9 @@ const AddMenu = () => {
             //ดึง url ของรูป
             getDownloadURL(snapshot.ref).then((url) => {
                 console.log('File available at', url);
+                //เก็บ url และ form ไว้ใน data
                 const data = { url, ...form }
+                //เก็บ addDoc เข้า คอลเลคชั่น menu
                 addDoc(collection(db,"menu"), data)            
                 .then((res) => {
                     console.log(res);
